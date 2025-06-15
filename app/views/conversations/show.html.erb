@@ -1,0 +1,10 @@
+<h1>Conversando com <%= @conversation.sender == current_user ? @conversation.recipient.name : @conversation.sender.name %></h1>
+
+<div id="messages">
+  <%= render @messages %>
+</div>
+
+<%= form_with(model: [@conversation, @message], local: true) do |form| %>
+  <%= form.text_area :body %>
+  <%= form.submit 'Enviar' %>
+<% end %>
