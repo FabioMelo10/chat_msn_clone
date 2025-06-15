@@ -1,24 +1,51 @@
-# README
+# Chat MSN Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple chat application built with [Ruby on Rails](https://rubyonrails.org/).
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Ruby 3.2.2
+- [Bundler](https://bundler.io/)
+- [PostgreSQL](https://www.postgresql.org/) running locally
 
-* System dependencies
+## Local setup
 
-* Configuration
+The project provides a setup script to configure your development environment.
+Run it after cloning the repository:
 
-* Database creation
+```bash
+bin/setup
+```
 
-* Database initialization
+The script installs required gems and runs `bin/rails db:prepare` to create and
+migrate the database. It also clears logs and restarts the application.
 
-* How to run the test suite
+## Database preparation
 
-* Services (job queues, cache servers, search engines, etc.)
+If you need to prepare the database manually, execute:
 
-* Deployment instructions
+```bash
+bin/rails db:prepare
+```
 
-* ...
+This command creates the database (if needed) and applies any migrations.
+
+## Running the server
+
+Start the application with:
+
+```bash
+bin/rails server
+```
+
+Visit `http://localhost:3000` once the server is running.
+
+## Running tests
+
+Execute the test suite with:
+
+```bash
+bin/rails test
+```
+
+The tests use Minitest and run against the `test` database.
