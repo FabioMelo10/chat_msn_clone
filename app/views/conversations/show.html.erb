@@ -1,6 +1,13 @@
-<h1 class="mb-3">Conversando com <%= @conversation.sender == current_user ? @conversation.recipient.name : @conversation.sender.name %></h1>
+<h1 class="mb-3">
+  Conversando com 
+  <%= @conversation.sender == current_user ? @conversation.recipient.name : @conversation.sender.name %>
+</h1>
 
-<div id="messages" class="list-group mb-3">
+<div id="messages" 
+     class="list-group mb-3"
+     data-controller="messages" 
+     data-messages-conversation-id-value="<%= @conversation.id %>">
+  
   <%= render @messages %>
 </div>
 
@@ -10,3 +17,4 @@
   </div>
   <%= form.submit 'Enviar', class: "btn btn-primary" %>
 <% end %>
+
