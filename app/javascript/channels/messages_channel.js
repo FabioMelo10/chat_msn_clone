@@ -1,15 +1,13 @@
 import consumer from "channels/consumer"
 
-consumer.subscriptions.create("MessagesChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+const messagesContainer = document.getElementById("messages")
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+if (messagesContainer) {
+  const conversationId = messagesContainer.dataset.conversationId
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
-});
+  consumer.subscriptions.create({ channel: "MessagesChannel", conversation_id: conversationId }, {
+    received(data) {
+      messagesContainer.insertAdjacentHTML("beforeend", data)
+    }
+  })
+}

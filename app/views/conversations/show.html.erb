@@ -1,6 +1,6 @@
 <h1>Conversando com <%= @conversation.sender == current_user ? @conversation.recipient.name : @conversation.sender.name %></h1>
 
-<div id="messages">
+<div id="messages" data-conversation-id="<%= @conversation.id %>">
   <%= render @messages %>
 </div>
 
