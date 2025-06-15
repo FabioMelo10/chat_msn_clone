@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :messages
 
+  validates :name, presence: true
+
   def conversations
     Conversation.where("sender_id = ? OR recipient_id = ?", id, id)
   end
