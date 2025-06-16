@@ -48,4 +48,8 @@ Execute the test suite with:
 bin/rails test
 ```
 
-The tests use Minitest and run against the `test` database.
+The tests use Minitest and run against the `test` database. **Ruby 3.2.2 must be
+installed** to execute them successfully. If you are not using the provided
+Docker setup, install the required Ruby version with your preferred version
+manager (for example, `rbenv install 3.2.2`). The Dockerfile installs Ruby
+3.2.2 automatically when building the image.
