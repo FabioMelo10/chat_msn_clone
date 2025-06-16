@@ -13,10 +13,10 @@ class Message < ApplicationRecord
   private
 
   def broadcast_message
-    message_html = ApplicationController.render(
+    message_html = ApplicationController.renderer.render(
       partial: 'messages/message',
       locals: { message: self }
     )
-    ActionCable.server.broadcast("messages_#{conversation_id}", message_html)
+    ActionCable.server.broadcast("messages_#{conversation.id}", message_html)
   end
 end
