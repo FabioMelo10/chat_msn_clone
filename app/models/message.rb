@@ -2,6 +2,8 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :user
 
+  validates :body, presence: true
+
   attribute :read, :boolean, default: false
 
   after_create_commit :broadcast_message
