@@ -1,10 +1,20 @@
-<h1>Conversando com <%= @conversation.sender == current_user ? @conversation.recipient.name : @conversation.sender.name %></h1>
+<h1 class="mb-3">
+  Conversando com 
+  <%= @conversation.sender == current_user ? @conversation.recipient.name : @conversation.sender.name %>
+</h1>
 
-<div id="messages">
+<div id="messages" 
+     class="list-group mb-3"
+     data-controller="messages" 
+     data-messages-conversation-id-value="<%= @conversation.id %>">
+  
   <%= render @messages %>
 </div>
 
-<%= form_with(model: [@conversation, @message], local: true) do |form| %>
-  <%= form.text_area :body %>
-  <%= form.submit 'Enviar' %>
+<%= form_with(model: [@conversation, @message], local: true, class: "mt-3") do |form| %>
+  <div class="mb-3">
+    <%= form.text_area :body, class: "form-control", rows: 3 %>
+  </div>
+  <%= form.submit 'Enviar', class: "btn btn-primary" %>
 <% end %>
+
